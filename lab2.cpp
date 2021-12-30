@@ -4,7 +4,7 @@
 using namespace std;
 int main()
 {
-    double mn1sum = 0;
+    double mn1sum = 1;
     const int size = 20;
     int size1;
     double *array = new double[size];
@@ -98,9 +98,9 @@ int main()
     }
     for (int w = nq + 1; w < nb; w++)
     {
-        mn1sum += array[w];
+        mn1sum *= array[w];
     }
-    cout << "Sum of elements between first and last negative number: " << mn1sum << endl;
+    cout << "Product of elements between first and last negative number: " << mn1sum << endl;
     for (int u = 1; u <= size1; u++)
     {
         if (abs(array[u]) < 1)
