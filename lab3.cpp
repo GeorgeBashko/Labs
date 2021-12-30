@@ -26,7 +26,9 @@ void RandMatrix(int size,vector<vector<int>>& matrix)
         cout<<"|";
         for(int j = 0; j <size; j++)
         {
+            if ((i + j) % 2 == 0) {
             matrix[i][j]=rand()%max;
+            }
             cout<<setw(6)<<GetMatrixElement(i,j,matrix,size)<<"  ";
         }
         cout<<"|";
