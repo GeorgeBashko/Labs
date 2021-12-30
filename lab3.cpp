@@ -3,11 +3,11 @@
 #include<vector>
 #include<cstdlib>
 using namespace std;
-int GetMatrixElement(int i,int j,vector<vector<int>>& matrix)
+int GetMatrixElement(int i,int j,vector<vector<int>>& matrix,int size)
 {
-    if((i+j)%2!=0)
+    if((i+j)%2 !=0)
     {
-      return 1;
+        return 1;
     }
     else
     {
@@ -23,44 +23,34 @@ void RandMatrix(int size,vector<vector<int>>& matrix)
     cout<<"Your matrix"<<endl;
     for(int i = 0; i <size; i++)
     {
-      cout<<"|";
+        cout<<"|";
         for(int j = 0; j <size; j++)
         {
             matrix[i][j]=rand()%max;
-            cout<<setw(6)<<GetMatrixElement(i,j,matrix)<<"  ";
+            cout<<setw(6)<<GetMatrixElement(i,j,matrix,size)<<"  ";
         }
         cout<<"|";
         cout<<endl;
     }
 }
-void PrintMatrix(int size,vector<vector<int>>& matrix)
-{
-    int q=1;
-    for(int i =0;i<size;i++)
-    {
-        for(int j =0;j<size;j++)
-        {
-            if((i+j)%2!=0)
-            {
-                matrix[i][j]=1;
-                q++;
-            }
-            else
-            {
-                cout<<endl;
-                cout<<"Enter a matrix element: ";
-                cin>>matrix[i][j];
+void PrintMatrix(int size,vector<vector<int>>& matrix) {
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if ((i + j) % 2 == 0) {
+                cout << endl;
+                cout << "Enter a matrix element: ";
+                cin >> matrix[i][j];
             }
         }
     }
-    cout<<endl;
+    cout << endl;
     cout<<"Your matrix"<<endl;
     for(int k = 0;k<size;k++)
     {
         cout<<"|";
         for(int p = 0;p<size;p++)
         {
-            cout<<setw(6)<<GetMatrixElement(k,p,matrix)<<"  ";
+            cout<<GetMatrixElement(k,p,matrix,size);
         }
         cout<<"|"<<endl;
     }
@@ -73,6 +63,7 @@ void FirstTask(int size,vector<vector<int>>& matrix)
     {
         for(int j =0;j<size;j++)
         {
+            GetMatrixElement(i,j,matrix,size);
             if(matrix[i][j]==0)
             {
                 r++;
@@ -98,6 +89,7 @@ void SecondTask(int size,vector<vector<int>>& matrix)
     {
         for(int u = b,y = 0;u<size;u++,y++)
         {
+            GetMatrixElement(b,u,matrix,size);
             rez*=matrix[y][u];
         }
         if(rez>rez1)
@@ -110,6 +102,7 @@ void SecondTask(int size,vector<vector<int>>& matrix)
     {
         for(int v =0 ,c= b;c<size;c++,v++)
         {
+            GetMatrixElement(b,c,matrix,size);
             rez2*=matrix[c][v];
         }
         if(rez2>rez3)
